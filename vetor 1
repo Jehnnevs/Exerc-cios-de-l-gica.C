@@ -1,0 +1,69 @@
+#include <stdio.h>
+#define v 50
+
+int main(){
+    
+    double a, valor, N[v], media;
+    int i, b, menu, valor3;
+    
+    do{
+        a=0;
+        valor3=0;
+        
+        printf("Escolha uma das opcoes:\n\n");
+        printf("1-Colocar o mesmo valor nos vetores\n");
+        printf("2-Colocar valores diferentes nos vetores\n");
+        printf("3-Ordenar o valor dos vetores de 10 em 10\n");
+        scanf("%d", &b);
+        
+        if(b<1||b>3){
+            printf("Voce escolheu uma opcao invalida! Tente novamente.\n\n");
+            menu=1;
+            continue;
+        }
+    
+        if(b==3){
+            for(i=0; i<v; i++){
+                valor3+=10;
+                N[i]=valor3;
+            }
+        }else{
+            if(b==1){
+                printf("Digite um valor para os vetores:\n");
+                scanf("%lf", &valor);
+            }
+            
+            for(i=0; i<v; i++){
+                if(b==1){
+                    N[i]=valor;
+                }else if(b==2){
+                    printf("Digite um valor para o vetor %d:\n", i+1);
+                    scanf("%lf", &N[i]);
+                }
+            }
+        }
+        
+        for(i=0; i<v; i++){
+            a+=N[i];
+        }
+        media=a/v;
+        
+        printf("\nMedia dos vetores: %.2f \n\n", media);
+        
+        printf("Vetores com valor acima da media:\n");
+        for(i=0; i<v; i++){
+            if(N[i]>media){
+                printf("Vetor %d: %.2f\n", i+1, N[i]);
+            }
+        }
+        
+        printf("\n1-Voltar ao menu\n");
+        printf("2-Sair\n");
+        scanf("%d", &menu);
+    
+    }while(menu==1);
+    
+    printf("Obrigado por usar o programa!\n");
+    
+    return 0;
+}
